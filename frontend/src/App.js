@@ -1,15 +1,10 @@
-import {useEffect} from "react";
+import { useContext } from "react";
+import "./styles/SelectWidget.styles.css";
+import { WidgetsContext } from "./context/WidgetsProvider";
 
-function App() {
-
-  useEffect(() => {
-    fetch("http://localhost:5000")
-      .then((response) => response.json())
-      .then((data) => console.log(data));
-  }, []);
-  return (
-    <h1>React APP</h1>
-  );
-}
+const App = () => {
+  const { currScreen, SCREENS } = useContext(WidgetsContext);
+  return SCREENS[currScreen].comp;
+};
 
 export default App;
